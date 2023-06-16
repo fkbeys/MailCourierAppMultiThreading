@@ -8,15 +8,20 @@
         }
         private static readonly Lazy<LogService> logService = new Lazy<LogService>(() => new LogService());
 
+
+
         public static LogService GetInstance()
         {
             return logService.Value;
         }
 
-        public Action<string> onLogAdded;
+        public static Action<string> logAction = new Action<string>((x) => { });
+
+
         public void Log(string message)
         {
-            onLogAdded.Invoke(message);
+            logAction.Invoke(message);
+            //act.Invoke(message);
         }
 
 
