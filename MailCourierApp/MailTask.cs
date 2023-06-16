@@ -1,4 +1,6 @@
-﻿namespace MailCourierApp
+﻿using MailCourierApp.Services;
+
+namespace MailCourierApp
 {
     public class MailTask
     {
@@ -11,13 +13,17 @@
 
         public async Task Run()
         {
+            var manager = new MailManager();
             while (isStarted && !isRunning)
             {
                 isRunning = true;
                 //
+                var fakeData = FakeDataGenerator.CreateMails(10);
+                manager.AddMails(fakeData);
+                await manager.SendAllMails();
+                 
                 isRunning = false;
-
-
+                 
                 NextRunning = DateTime.Now.AddSeconds(second);
                 await Task.Delay(second * 1000);
 
@@ -35,6 +41,7 @@
         public async Task Stop()
         {
             isStarted = false;
+            NextRunning = null;
         }
 
     }

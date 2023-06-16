@@ -11,6 +11,6 @@
     {
         None = 0,
         Smtp = 1,
-        MailGun = 2,
+        Pop3 = 2,
     }
 }

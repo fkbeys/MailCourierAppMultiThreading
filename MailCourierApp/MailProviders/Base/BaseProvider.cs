@@ -6,6 +6,6 @@ namespace MailCourierApp.MailProviders.Base
     {
         public int port { get; set; }
         public string serverHostName { get; set; } = "smtp.google.com";
-        public abstract void send(MailObject mailObject);
+        public abstract Task send(MailObject mailObject);
     }
 }
