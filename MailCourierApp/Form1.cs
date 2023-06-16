@@ -1,4 +1,5 @@
 using MailCourierApp.MailProviders.Base;
+using MailCourierApp.Models;
 using MailCourierApp.Services;
 
 namespace MailCourierApp
@@ -35,16 +36,23 @@ namespace MailCourierApp
         {
             mailTaskBindingSource.Clear();
 
-            var mailTask = new MailTask
+            var mailTask1 = new MailTask(MailType.Smtp)
             {
-                second = 60,
+                second = 10,
                 isRunning = false,
                 isStarted = false,
                 NextRunning = DateTime.Now.AddDays(1),
-                taskName = "initial"
-
+                taskName = "smtp"
             };
-            mailTaskBindingSource.DataSource = new List<MailTask> { mailTask };
+            var mailTask2 = new MailTask(MailType.Pop3)
+            {
+                second = 20,
+                isRunning = false,
+                isStarted = false,
+                NextRunning = DateTime.Now.AddDays(1),
+                taskName = "pop3"
+            };
+            mailTaskBindingSource.DataSource = new List<MailTask> { mailTask1, mailTask2 };
 
         }
 
@@ -68,7 +76,8 @@ namespace MailCourierApp
 
         private async void btnRun_Click(object sender, EventArgs e)
         {
-            await mailtask.Run();
+
+            await mailtask.Run(mailtask.mailType);
             GuiRefresh();
         }
 

@@ -5,7 +5,7 @@ namespace MailCourierApp.MailProviders.Base
 {
     public class SmtpProvider : BaseProvider
     {
-
+        
         public override async Task send(MailObject mailObject)
         {
             //send email simulation

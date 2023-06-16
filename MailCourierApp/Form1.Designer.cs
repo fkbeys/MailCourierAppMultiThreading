@@ -62,9 +62,9 @@
             // btnClearTheList
             // 
             btnClearTheList.Dock = DockStyle.Bottom;
-            btnClearTheList.Location = new Point(0, 428);
+            btnClearTheList.Location = new Point(0, 128);
             btnClearTheList.Name = "btnClearTheList";
-            btnClearTheList.Size = new Size(786, 41);
+            btnClearTheList.Size = new Size(786, 35);
             btnClearTheList.TabIndex = 1;
             btnClearTheList.Text = "Clear the list.";
             btnClearTheList.UseVisualStyleBackColor = true;
@@ -75,9 +75,9 @@
             listBox1.Dock = DockStyle.Bottom;
             listBox1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             listBox1.ItemHeight = 17;
-            listBox1.Location = new Point(0, 469);
+            listBox1.Location = new Point(0, 163);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(786, 208);
+            listBox1.Size = new Size(786, 514);
             listBox1.TabIndex = 0;
             // 
             // dataGridView1
@@ -97,7 +97,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(786, 379);
+            dataGridView1.Size = new Size(786, 79);
             dataGridView1.TabIndex = 2;
             // 
             // idDataGridViewTextBoxColumn
