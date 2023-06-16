@@ -40,16 +40,20 @@
             secondDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             nextRunningDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             mailTaskBindingSource = new BindingSource(components);
+            panel1 = new Panel();
+            btnRun = new Button();
+            btnStop = new Button();
+            btnStart = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)mailTaskBindingSource).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // btnListTasks
             // 
-            btnListTasks.Dock = DockStyle.Top;
-            btnListTasks.Location = new Point(0, 0);
+            btnListTasks.Location = new Point(3, 3);
             btnListTasks.Name = "btnListTasks";
-            btnListTasks.Size = new Size(786, 39);
+            btnListTasks.Size = new Size(360, 34);
             btnListTasks.TabIndex = 0;
             btnListTasks.Text = "List Mail Tasks";
             btnListTasks.UseVisualStyleBackColor = true;
@@ -89,11 +93,11 @@
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn, taskNameDataGridViewTextBoxColumn, isRunningDataGridViewCheckBoxColumn, isStartedDataGridViewCheckBoxColumn, secondDataGridViewTextBoxColumn, nextRunningDataGridViewTextBoxColumn });
             dataGridView1.DataSource = mailTaskBindingSource;
             dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(0, 39);
+            dataGridView1.Location = new Point(0, 49);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(786, 389);
+            dataGridView1.Size = new Size(786, 379);
             dataGridView1.TabIndex = 2;
             // 
             // idDataGridViewTextBoxColumn
@@ -147,6 +151,58 @@
             // mailTaskBindingSource
             // 
             mailTaskBindingSource.DataSource = typeof(MailTask);
+            mailTaskBindingSource.CurrentItemChanged += mailTaskBindingSource_CurrentItemChanged;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(btnRun);
+            panel1.Controls.Add(btnStop);
+            panel1.Controls.Add(btnStart);
+            panel1.Controls.Add(btnListTasks);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(786, 49);
+            panel1.TabIndex = 3;
+            // 
+            // btnRun
+            // 
+            btnRun.BackColor = Color.Green;
+            btnRun.Enabled = false;
+            btnRun.ForeColor = Color.Black;
+            btnRun.Location = new Point(624, 3);
+            btnRun.Name = "btnRun";
+            btnRun.Size = new Size(150, 34);
+            btnRun.TabIndex = 3;
+            btnRun.Text = "Run";
+            btnRun.UseVisualStyleBackColor = true;
+            btnRun.Click += btnRun_Click;
+            // 
+            // btnStop
+            // 
+            btnStop.BackColor = Color.Red;
+            btnStop.Enabled = false;
+            btnStop.ForeColor = Color.Black;
+            btnStop.Location = new Point(369, 3);
+            btnStop.Name = "btnStop";
+            btnStop.Size = new Size(130, 34);
+            btnStop.TabIndex = 2;
+            btnStop.Text = "Stop";
+            btnStop.UseVisualStyleBackColor = true;
+            btnStop.Click += btnStop_Click;
+            // 
+            // btnStart
+            // 
+            btnStart.BackColor = Color.Yellow;
+            btnStart.Enabled = false;
+            btnStart.ForeColor = Color.Black;
+            btnStart.Location = new Point(505, 3);
+            btnStart.Name = "btnStart";
+            btnStart.Size = new Size(113, 34);
+            btnStart.TabIndex = 1;
+            btnStart.Text = "Start";
+            btnStart.UseVisualStyleBackColor = true;
+            btnStart.Click += btnStart_Click;
             // 
             // Form1
             // 
@@ -155,14 +211,15 @@
             ClientSize = new Size(786, 677);
             Controls.Add(dataGridView1);
             Controls.Add(btnClearTheList);
-            Controls.Add(btnListTasks);
             Controls.Add(listBox1);
+            Controls.Add(panel1);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)mailTaskBindingSource).EndInit();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -180,5 +237,9 @@
         private DataGridViewTextBoxColumn secondDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nextRunningDataGridViewTextBoxColumn;
         private BindingSource mailTaskBindingSource;
+        private Panel panel1;
+        private Button btnStop;
+        private Button btnStart;
+        private Button btnRun;
     }
 }
